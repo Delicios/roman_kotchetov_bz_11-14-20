@@ -5,3 +5,28 @@
   background: #abc;
   min-height: 100vh;
 }
+
+.color-primary {
+    color: $color-primary;
+}
+.color-primary-lighter {
+    color: $color-primary-lighter;
+}
+.color-secondary {
+    color: $color-secondary;
+}
+.color-secondary-lighter {
+    color: $color-secondary-lighter;
+}
+.color-gray-one {
+    color: $color-gray-one;
+}
+.color-gray-two {
+    color: $color-gray-two;
+}
+.color-gray-three {
+    color: $color-gray-three;
+}
+.color-gray-four {
+    color: $color-gray-four;
+}

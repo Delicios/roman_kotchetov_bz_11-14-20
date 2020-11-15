@@ -10,8 +10,7 @@ const Modal = styled.div`
     box-sizing: border-box;
     padding-bottom: 25px;
     background: ${theme.color.grayFour};
-
-
+    background: pink;
     padding: 20px;
     max-width: 500px;
 `;
@@ -45,11 +44,12 @@ const Page = (...props) => {
             { view === 'checkoutOne' &&
                 <>
                     <h2>Other View</h2>
+                    <GettingStarted />
                 </>
             }
-            <button onClick={() => setView('start')} >Home Page</button>
-            <button onClick={() => setView('checkout-one')} >A Other Page</button>
-            <button onClick={() => setView('')} >Unset Page</button>
+            <button onClick={() => setView('start')} >Change View</button>
+            <button onClick={() => setView('checkout-one')} >A Change View</button>
+            <button onClick={() => setView('')} >Change View</button>
         </Modal>
     )
 }

@@ -12,7 +12,12 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    padding-bottom: 25px;
+    padding: 25px;
+    
+    background: ${theme.color.grayFour};
+
+    
+    // convert this to display grid and size the elements by percent
 `;
 
 const StyledIcon = styled(Icon)`
@@ -23,6 +28,7 @@ const StyledIcon = styled(Icon)`
     padding: 20px;
     background: ${theme.color.primaryLighter};
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.1));
+    margin-top: .25rem;
     margin-bottom: .75rem;
     color: ${theme.color.primary};
 

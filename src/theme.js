@@ -4,7 +4,7 @@ theme.color = {
     primary: `#0074D9`,
     primaryLighter: `#A8DAFF`,
     secondary: `#71F79F`,
-    secondaryLighter: `#a3fac2`,
+    secondaryLighter: `#9cf9bc`,
     grayOne: `#333`,
     grayTwo: `#bdbdbd`,
     grayThree: `#eeeeee`,
