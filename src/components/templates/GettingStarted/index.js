@@ -13,8 +13,6 @@ const Wrapper = styled.div`
     flex-direction: column;
     box-sizing: border-box;
     padding: 25px;
-    
-    background: ${theme.color.grayFour};
 
     
     // convert this to display grid and size the elements by percent

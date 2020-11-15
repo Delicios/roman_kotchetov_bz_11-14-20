@@ -9,6 +9,7 @@ theme.color = {
     grayTwo: `#bdbdbd`,
     grayThree: `#eeeeee`,
     grayFour: `#f9f9f9`,
+    grayFive: `#fff`,
 }
 
 export default theme;

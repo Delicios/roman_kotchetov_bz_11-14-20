@@ -12,13 +12,13 @@ const FeatureList = ({ ...props }) => (
         <StyledList default>
             <li>
                 Answer a few simple questions about your business
-      </li>
+            </li>
             <li>
                 Browse through specially curated quotes
-      </li>
+            </li>
             <li>
                 Select your quote-of-choice and receive your policy instantly
-      </li>
+            </li>
         </StyledList>
     </div>
 )
