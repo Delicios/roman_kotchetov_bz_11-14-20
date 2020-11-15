@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import GettingStarted from '../../templates/GettingStarted';
 import Checkout from '../../templates/Checkout';
+import Payment from '../../templates/Payment';
 import theme from '../../../theme.js';
 
 const Modal = styled.div`
@@ -25,8 +26,11 @@ const Page = (...props) => {
         if (view === 'start') {
             setView('start');
         }
-        if (view === 'checkout-one') {
-            setView('checkout-one');
+        if (view === 'checkout') {
+            setView('checkout');
+        }
+        if (view === 'payment') {
+            setView('payment');
         }
     }
 
@@ -42,15 +46,22 @@ const Page = (...props) => {
                         <GettingStarted />
                     </>
                 }
-                { view === 'checkout-one' &&
+                { view === 'checkout' &&
                     <>
-                        <h2>Other View</h2>
+                        <h2>Checkout</h2>
                         <Checkout />
                     </>
                 }
+                { view === 'payment' &&
+                    <>
+                        <h2>Payment</h2>
+                        <Payment />
+                    </>
+                }
             </Modal>
-            <button onClick={() => changeView('start')} >Getting Started</button>
-            <button onClick={() => changeView('checkout-one')} >Checkout Page </button>
+            <button onClick={() => changeView('start')}>Getting Started</button>
+            <button onClick={() => changeView('checkout')}>Checkout</button>
+            <button onClick={() => changeView('payment')}>Payment</button>
         </>
     )
 }
