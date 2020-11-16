@@ -24,6 +24,7 @@ Should open [http://localhost:3000](http://localhost:3000) in browser
 1. Animations are missing (Modal and between views)
 1. Headings flavors aren't set
 1. Button component could be cleaner (variants/types)
+1. Spacing is kind of all over the place not enough time to come up with a system (SASS would have greatly helped with this)
 1. More attoms and molecules can be extracted from the templates
 
 ---
