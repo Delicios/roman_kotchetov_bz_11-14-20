@@ -1,3 +1,33 @@
+Front end challenge for BZ.
+
+### 1. Install dependencies
+
+```sh
+$ yarn install
+```
+
+### 2. Run the app
+
+```sh
+$ yarn start
+```
+
+Should open [http://localhost:3000](http://localhost:3000) in browser 
+
+
+#### Todo:
+1. Payment page submit button is still buggy. The whole page could use some optimization (*ie* a proper card validation library), but mostly works, mostly..
+1. Icons and Images are being brougth in inline instead of the cleaner "component way" ie: `<Icon icon="check" />`
+1. Media queries should be unified and brought into the theme file
+1. Storybook is implemented but not hooked up
+1. Tests
+1. Animations are missing (Modal and between views)
+1. Headings flavors aren't set
+1. Button component could be cleaner (variants/types)
+1. More attoms and molecules can be extracted from the templates
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
