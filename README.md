@@ -3,13 +3,13 @@ Front end challenge for BZ.
 ### 1. Install dependencies
 
 ```sh
-$ npm install
+$ yarn install
 ```
 
 ### 2. Run the app
 
 ```sh
-$ npm start
+$ yarn start
 ```
 
 Should open [http://localhost:3000](http://localhost:3000) in browser 
