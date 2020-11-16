@@ -1,14 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import Card from '../../atoms/Card';
 import Heading from '../../atoms/Heading';
 import Button from '../../atoms/Button';
-import Image from '../../atoms/Image';
 import PageIcon from '../../molecules/PageIcon';
-import PaymentForm from '../../organisms/PaymentForm';
 import { ReactComponent as CardIcon } from '../../atoms/Icon/icons/card.svg';
-import { ReactComponent as Stars } from '../../atoms/Image/images/stars.svg';
-import theme from '../../../theme';
 
 const Wrapper = styled.div`
     display: flex;

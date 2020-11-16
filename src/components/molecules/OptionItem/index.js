@@ -50,7 +50,7 @@ const Wrapper = styled.div`
 `;
 
 const OptionItem = ({ ...props }) => {
-    const { title, description, selected } = props;
+    const { title, description } = props;
     return (
         <Wrapper {...props}>
             <StyledIcon {...props} />
