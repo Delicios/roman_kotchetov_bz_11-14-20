@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import NumberedHeader from '../../molecules/NumberedHeader';
 import OptionItem from '../../molecules/OptionItem';
+import Input from '../../atoms/Input';
 import CheckoutFooter from '../../molecules/CheckoutFooter';
 import { ReactComponent as BriefcaseIcon } from '../../atoms/Icon/icons/briefcase.svg';
 import { ReactComponent as CloudIcon } from '../../atoms/Icon/icons/cloud-rain.svg';
@@ -12,15 +13,25 @@ const Wrapper = styled.div`
     display: grid;
     flex-direction: column;
     box-sizing: border-box;
-    padding-bottom: 4rem;
+    padding-bottom: 40px;
 `;
 
 const Label = styled.label`
     cursor: pointer;
+    display: grid;
 
     input {
         opacity: 0;
         position: absolute;
+    }
+`;
+
+const Container = styled.div`
+    @media screen and (min-width: 680px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        column-gap: 25px; 
     }
 `;
 
@@ -41,6 +52,7 @@ const Checkout = ({...props}) => {
             <Wrapper>
                 <NumberedHeader
                     title="What type of insurance are you looking for?" step={1} />
+                <Container>
                 <Label>
                     <input
                         type="radio"
@@ -101,6 +113,18 @@ const Checkout = ({...props}) => {
                         <WifiIcon />
                     </OptionItem>
                 </Label>
+                </Container>
+            </Wrapper>
+            <Wrapper className="faded">
+                <NumberedHeader
+                    title="What’s the name of your business?" step={2} />
+                <div>
+                    <Input
+                        type="text"
+                        placeholder="Business Name"
+                        value=""
+                    />
+                </div>
             </Wrapper>
             <CheckoutFooter step={"1/7"} view={view} validation={valid}/>
         </>

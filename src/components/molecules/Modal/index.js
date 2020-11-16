@@ -29,6 +29,13 @@ const Wrapper = styled.div`
         width: 0px;
         background: transparent; /* make scrollbar transparent */
     }
+
+    @media screen and (max-width: 600px) {
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+        width: 100vw;
+    }
 `;
 
 const StyledIcon = styled(Icon)`
@@ -89,7 +96,7 @@ const Container = styled.div`
     right: 0;
     overflow: hidden;
     overflow-y: scroll;
-    padding: 25px;
+    padding: 0 20px;
 
     @media screen and (min-width: 600px) {
         padding: 50px;

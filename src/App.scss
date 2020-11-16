@@ -30,3 +30,8 @@
 .color-gray-four {
     color: $color-gray-four;
 }
+
+.faded {
+    opacity: .15;
+    pointer-events: none;
+}

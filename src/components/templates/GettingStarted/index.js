@@ -12,27 +12,27 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    // convert this to display grid and size the elements by percent
+    padding-bottom: 30px; 
 `;
 
 const StyledHeading = styled(Heading)`
     text-align: center;
     font-weight: bold;
-    font-size: 44px;
-    line-height: 52px;
-    margin-bottom: 3.75rem;
-
-    @media screen and (max-width: 640px) {
-        font-size: 40px;
-        line-height: 47px;
+    font-size: 40px;
+    line-height: 47px;
+    margin-bottom: 4vh;
+    
+    @media screen and (min-width: 640px) {
+        font-size: 44px;
+        line-height: 52px;
     }
 `;
 
 const StyledButton = styled(Button)`
     height: 50px;
     width: 312px;
-    margin-top: 3rem;
-    margin-bottom: 1rem;
+    margin-top: 5vh;
+    margin-bottom: 3vh;
 
     &:hover, &:focus, &:active {
         box-shadow: 0 0 0 rgba(0, 0, 0, 0.1);
@@ -43,8 +43,6 @@ const StyledButton = styled(Button)`
     }
 
     @media screen and (max-width: 640px) {
-        margin-top: 4.375rem;
-        margin-bottom: 3.75rem;
         width: 100%;
     }
 `;

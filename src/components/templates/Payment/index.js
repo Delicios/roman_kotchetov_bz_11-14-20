@@ -102,7 +102,7 @@ const Payment = ({ ...props }) => {
             <PaymentForm formValidation={valid} />
             <Pretext>selected coverage</Pretext>
             <Card selected>
-                <Logo>Company Logo</Logo>
+                <Logo>Logo</Logo>
                 <Image><Stars /></Image>
                 <PricePerMonth>$120<span>/mo</span></PricePerMonth>
                 <PricePerYear>$1400 per year</PricePerYear>
