@@ -86,12 +86,10 @@ const PricePerYear = styled.div`
 `;
 
 const Payment = ({ ...props }) => {
-    const [valid, validForm] = useState(false);
+    const [valid, setFormValidation] = useState(false);
 
-    const checkForm = str => {
-        console.log(str);
-        console.log(valid);
-        validForm(true);
+    const checkForm = () => {
+        setFormValidation(true);
     }
 
     return (
@@ -101,7 +99,7 @@ const Payment = ({ ...props }) => {
             </PageIcon>
             <StyledHeading>Woah, slow down there cowboy!</StyledHeading>
             <StyledSubHeading className="align-center">We’re gonna need to see some payment info</StyledSubHeading>
-            <PaymentForm valid/>
+            <PaymentForm formValidation={valid} />
             <Pretext>selected coverage</Pretext>
             <Card selected>
                 <Logo>Company Logo</Logo>
@@ -109,7 +107,7 @@ const Payment = ({ ...props }) => {
                 <PricePerMonth>$120<span>/mo</span></PricePerMonth>
                 <PricePerYear>$1400 per year</PricePerYear>
             </Card>
-            <StyledButton secondary onSubmit={e => checkForm()}>Complete Purchase</StyledButton>
+            <StyledButton secondary onSubmit={e => checkForm()} className={valid ? '' : 'disabled'}>Complete Purchase</StyledButton>
         </Wrapper>
     )
 }

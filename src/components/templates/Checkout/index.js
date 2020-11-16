@@ -9,7 +9,7 @@ import { ReactComponent as PackageIcon } from '../../atoms/Icon/icons/package.sv
 import { ReactComponent as WifiIcon } from '../../atoms/Icon/icons/wifi.svg';
 
 const Wrapper = styled.div`
-    display: flex;
+    display: grid;
     flex-direction: column;
     box-sizing: border-box;
     padding-bottom: 4rem;
@@ -35,10 +35,12 @@ const Checkout = ({...props}) => {
         }
     }, [selectedOption]);
 
+    // Could be DRYrer
     return (
         <>
             <Wrapper>
-                <NumberedHeader title="What type of insurance are you looking for?" step={1} />
+                <NumberedHeader
+                    title="What type of insurance are you looking for?" step={1} />
                 <Label>
                     <input
                         type="radio"
@@ -46,7 +48,11 @@ const Checkout = ({...props}) => {
                         value="Professional"
                         onChange={() => setSelectedOption("Professional")}
                     />
-                    <OptionItem title="Professional Liability" description="Erros & Omissions (E&O insurance)" >
+                    <OptionItem
+                        title="Professional Liability"
+                        description="Erros & Omissions (E&O insurance)"
+                        className={selectedOption === 'Professional' ? 'selected' : ''}
+                    >
                         <BriefcaseIcon />
                     </OptionItem>
                 </Label>
@@ -57,7 +63,11 @@ const Checkout = ({...props}) => {
                         value="General"
                         onChange={() => setSelectedOption("General")}
                     />
-                    <OptionItem title="General Liability" description="Help mitigate against loss (CGL insurance)" >
+                    <OptionItem
+                        title="General Liability"
+                        description="Help mitigate against loss (CGL insurance)"
+                        className={selectedOption === 'General' ? 'selected' : ''}
+                    >
                         <CloudIcon />
                     </OptionItem>
                 </Label>
@@ -68,7 +78,11 @@ const Checkout = ({...props}) => {
                         value="Business"
                         onChange={() => setSelectedOption("Business")}
                     />
-                    <OptionItem title="Business Owner’s Policy" description="The complete package (BOP)" >
+                    <OptionItem
+                        title="Business Owner’s Policy"
+                        description="The complete package (BOP)"
+                        className={selectedOption === 'Business' ? 'selected' : ''}
+                    >
                         <PackageIcon />
                     </OptionItem>
                 </Label>
@@ -79,7 +93,11 @@ const Checkout = ({...props}) => {
                         value="Cyber"
                         onChange={() => setSelectedOption("Cyber")}
                     />
-                    <OptionItem title="Cyber" description="Internet-bsed risks (CLIC)" >
+                    <OptionItem
+                        title="Cyber"
+                        description="Internet-bsed risks (CLIC)"
+                        className={selectedOption === 'Cyber' ? 'selected' : ''}
+                    >
                         <WifiIcon />
                     </OptionItem>
                 </Label>

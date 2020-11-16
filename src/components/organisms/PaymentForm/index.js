@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Input from '../../atoms/Input';
-
-const StyledLabel = styled.label`
-    font-size: 1.5rem;
-    display: block;
-    font-weight: bolder;
-    margin-bottom: 1.25rem;
-`;
+import Label from '../../atoms/Label';
 
 const StyledInput = styled(Input)`
     margin-bottom: .5rem;
@@ -28,8 +22,15 @@ const Error = styled.div`
     }
 `;
 
+const CardSpecs = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+`;
+
+
 const PaymentForm = ({ ...props }) => {
-    const { valid } = props;
+    const { formValidation } = props;
     const [cardNumber, setCardNumber] = useState('');
     const [cardName, setCardName] = useState('');
     const [cardDate, setCardDate] = useState('');
@@ -40,9 +41,15 @@ const PaymentForm = ({ ...props }) => {
     const [cardDateError, setCardDateError] = useState('');
     const [cardCVVError, setCardCVVError] = useState('');
 
+    const [valid, setValidation] = useState(formValidation);
+
+    if (!cardNumberError && !cardNameError && !cardDateError && !cardCVVError) {
+        console.log('sure');
+        // formValidation(true);
+    }
+
     // Needs proper validation/formating library
-    const validate = (str, type) => {
-        console.log(str);
+    const filter = (str, type) => {
         const filteredString = str.split('').filter(Number).join('');
         
         if (type === 'number') {
@@ -51,73 +58,71 @@ const PaymentForm = ({ ...props }) => {
         
         if (type === 'name') {
             setCardName(str.replace(/[^A-Za-z -,.]+/g, ''));
-            setCardNameError(cardName ? false : true);
         }
         
         if (type === 'date') {
             setCardDate(filteredString.slice(0, 4));
-            setCardDateError(cardDate ? false : true);
         }
         
         if (type === 'CVV') {
             setCardCVV(filteredString.slice(0, 3));
-            setCardCVVError(cardCVV ? false : true);
         }
     }
 
-    const validateNumber = () => cardNumber ? setCardNumberError(false): setCardNumberError(true);
-    const validateName = () => cardName ? setCardNameError(false): setCardNameError(true);
-    const validateDate = () => cardDate ? setCardDateError(false): setCardDateError(true);
-    const validateCVV = () => cardCVV ? setCardCVVError(false): setCardCVVError(true);
+    const validateNumber = () => cardNumber ? setCardNumberError(false) : setCardNumberError(true);
+    const validateName = () => cardName ? setCardNameError(false) : setCardNameError(true);
+    const validateDate = () => cardDate ? setCardDateError(false) : setCardDateError(true);
+    const validateCVV = () => cardCVV ? setCardCVVError(false) : setCardCVVError(true);
 
+    // Could be DRYer
     return (
         <>
             <div>
-                <StyledLabel>Credit Card Number</StyledLabel>
+                <Label>Credit Card Number</Label>
                 <StyledInput
                     type="text"
                     autocomplete="off" 
                     value={cardNumber}
-                    onChange={e => validate(e.target.value, 'number')}
-                    onBlur={e => validateNumber()}
+                    onChange={e => filter(e.target.value, 'number')}
+                    onBlur={() => validateNumber()}
                 />
                 <Error className={cardNumberError ? 'invalid': ''}>Umm, yeah. We're gonna need this.</Error>
             </div>
             <div>
-                <StyledLabel>Cardholder Name</StyledLabel>
+                <Label>Cardholder Name</Label>
                 <StyledInput
                     type="text"
                     placeholder="First Last"
                     value={cardName}
-                    onChange={e => validate(e.target.value, 'name')}
-                    onBlur={e => validateName()}
+                    onChange={e => filter(e.target.value, 'name')}
+                    onBlur={() => validateName()}
                 />
                 <Error className={cardNameError ? 'invalid' : ''}>Umm, yeah. We're gonna need this.</Error>
             </div>
-            <div className="card-specs">
+            <CardSpecs>
                 <div>
-                    <StyledLabel>Expiry Date</StyledLabel>
+                    <Label>Expiry Date</Label>
                     <StyledInput
                         type="text"
                         placeholder="MM/YY"
                         value={cardDate}
-                        onChange={e => validate(e.target.value, 'date')}
-                        onBlur={e => validateDate()}
+                        onChange={e => filter(e.target.value, 'date')}
+                        onBlur={() => validateDate()}
                     />
                     <Error className={cardDateError ? 'invalid' : ''}>Umm, yeah. We're gonna need this.</Error>
                 </div>
                 <div>
-                    <StyledLabel>CCV</StyledLabel>
+                    <Label>CCV</Label>
                     <StyledInput
                         type="text"
                         placeholder="CVV"
                         value={cardCVV}
-                        onChange={e => validate(e.target.value, 'CVV')}
-                        onBlur={e => validateCVV()}
+                        onChange={e => filter(e.target.value, 'CVV')}
+                        onBlur={() => validateCVV()}
                     />
                     <Error className={cardCVVError ? 'invalid' : ''}>Umm, yeah. We're gonna need this.</Error>
                 </div>
-            </div>
+            </CardSpecs>
         </>
     )
 }

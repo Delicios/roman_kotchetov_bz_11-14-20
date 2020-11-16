@@ -12,6 +12,7 @@ const StyledIcon = styled(Icon)`
     background: ${theme.color.primaryLighter};
     color: ${theme.color.primary};
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.1));
+    margin-top: 30px;
     margin-bottom: 45px;
 `;
 

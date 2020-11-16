@@ -42,16 +42,17 @@ const Wrapper = styled.div`
     border-radius: 4px;
     margin-bottom: 1.25rem;
 
-    .selected {
-        border-color: red;
+    &.selected {
+        border-color: ${theme.color.primary};
+        box-shadow: inset 0 0 0 1px ${theme.color.primary};
     }
 `;
 
 const OptionItem = ({ ...props }) => {
-    const { title, description, children } = props;
+    const { title, description, selected } = props;
     return (
-        <Wrapper>
-            <StyledIcon>{children}</StyledIcon>
+        <Wrapper {...props}>
+            <StyledIcon {...props} />
             <TextWrapper>
                 <StyledHeading>{title}</StyledHeading>
                 <StyledParagraph>{description}</StyledParagraph>

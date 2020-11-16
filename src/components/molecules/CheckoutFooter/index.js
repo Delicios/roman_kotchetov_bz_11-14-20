@@ -9,7 +9,7 @@ import { ReactComponent as UpIcon } from '../../atoms/Icon/icons/chevron-up.svg'
 import theme from '../../../theme.js';
 
 const Wrapper = styled.div`
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
@@ -38,6 +38,7 @@ const StyledButton = styled(Button)`
     height: 36px;
     width: 36px;
     line-height: 34px;
+    border-radius: 3px;x
     color: ${theme.color.grayOne}; // color grayscale 4
     background: ${theme.color.grayFour}; // color grayscale 0
 
