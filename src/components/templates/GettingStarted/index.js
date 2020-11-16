@@ -69,13 +69,14 @@ const StyledButton = styled(Button)`
     }
 `;
 
-const GettingStarted = () => {
+const GettingStarted = ({...props}) => {
+    const { view } = props;
     return (
         <Wrapper>
             <StyledIcon><UmbrellaIcon /></StyledIcon>
             <StyledHeading>So what gives?</StyledHeading>
             <FeatureList />
-            <StyledButton href="/insurance-type" secondary>GET STARTED</StyledButton>
+            <StyledButton secondary onClick={() => view('checkout')}>GET STARTED</StyledButton>
             <BrandBadge></BrandBadge>
         </Wrapper>
     )

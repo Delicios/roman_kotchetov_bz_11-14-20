@@ -15,13 +15,6 @@ const StyledIcon = styled(Icon)`
     margin-bottom: 45px;
 `;
 
-const PageIcon = ({ ...props }) => {
-    const { children } = props;
-    return (
-        <StyledIcon>
-            {children}
-        </StyledIcon>
-    )
-}
+const PageIcon = ({ ...props }) => <StyledIcon {...props} />;
 
 export default PageIcon;

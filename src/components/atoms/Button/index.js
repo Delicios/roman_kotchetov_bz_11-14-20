@@ -42,13 +42,12 @@ const StyledButton = styled.button`
 `;
 
 const Button = ({ ...props }) => {
-    const { type } = props
+    const { type } = props;
     return <StyledButton type={type} {...props} />
 }
 
 Button.propTypes = {
     disabled: PropTypes.bool,
-    palette: PropTypes.string,
     href: PropTypes.string,
 }
 

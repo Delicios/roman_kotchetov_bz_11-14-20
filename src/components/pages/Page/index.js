@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import GettingStarted from '../../templates/GettingStarted';
 import Checkout from '../../templates/Checkout';
@@ -22,7 +22,7 @@ const Modal = styled.div`
 const Page = (...props) => {
     const [view, setView] = useState('start');
 
-    function changeView(view) {
+    useEffect(() => {
         if (view === 'start') {
             setView('start');
         }
@@ -32,7 +32,7 @@ const Page = (...props) => {
         if (view === 'payment') {
             setView('payment');
         }
-    }
+    }, [view]);
 
     return (
         <>
@@ -43,25 +43,25 @@ const Page = (...props) => {
                 { view === 'start' &&
                     <>
                         <h2>Getting Started</h2>
-                        <GettingStarted />
+                        <GettingStarted view={setView} />
                     </>
                 }
                 { view === 'checkout' &&
                     <>
                         <h2>Checkout</h2>
-                        <Checkout />
+                        <Checkout view={setView} />
                     </>
                 }
                 { view === 'payment' &&
                     <>
                         <h2>Payment</h2>
-                        <Payment />
+                        <Payment view={setView}/>
                     </>
                 }
             </Modal>
-            <button onClick={() => changeView('start')}>Getting Started</button>
-            <button onClick={() => changeView('checkout')}>Checkout</button>
-            <button onClick={() => changeView('payment')}>Payment</button>
+            <button onClick={() => setView('start')}>Getting Started</button>
+            <button onClick={() => setView('checkout')}>Checkout</button>
+            <button onClick={() => setView('payment')}>Payment</button>
         </>
     )
 }

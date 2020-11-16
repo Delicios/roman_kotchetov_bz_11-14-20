@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import Card from '../../atoms/Card';
 import Heading from '../../atoms/Heading';
 import Button from '../../atoms/Button';
 import Image from '../../atoms/Image';
 import PageIcon from '../../molecules/PageIcon';
+import PaymentForm from '../../organisms/PaymentForm';
 import { ReactComponent as CardIcon } from '../../atoms/Icon/icons/card.svg';
+import { ReactComponent as Stars } from '../../atoms/Image/images/stars.svg';
 import theme from '../../../theme.js';
 
 const Wrapper = styled.div`
@@ -44,44 +47,11 @@ const StyledSubHeading = styled(Heading)`
 `;
 
 const StyledButton = styled(Button)`
-    margin-top: 4.375rem;
-    margin-bottom: 3.75rem;
-    background: ${theme.color.secondary};
     height: 50px;
     width: 312px;
     margin-top: 4.375rem;
     margin-bottom: 3.75rem;
 
-    &:hover, &:focus, &:active {
-        background-color: ${theme.color.secondary};
-        box-shadow: 0 0 0 rgba(0, 0, 0, 0.1);
-    }
-
-    &:focus {
-        outline: none;
-    }
-
-    @media screen and (max-width: 640px) {
-        width: 100%;
-    }
-`;
-
-const StyledInput = styled.input`
-    background: none;
-    border: none;
-    border-bottom: 1px solid black;
-    font-size: 1.25rem;
-    line-height: 2.5rem;
-    width: 100%;
-    color: ${theme.color.primary};
-    margin-bottom: .5rem;
-`;
-
-const Error = styled.div`
-    color: red;
-    font-size: 12px;
-    line-height: 21px;
-    margin-bottom: 1rem;
 `;
 
 const Pretext = styled.div`
@@ -90,31 +60,6 @@ const Pretext = styled.div`
     line-height: 24px;
     margin-top: 60px;
     margin-bottom: .5rem;
-`;
-
-const StyledLabel = styled.label`
-    font-size: 1.5rem;
-    display: block;
-    font-weight: bolder;
-    margin-bottom: 1.25rem;
-`;
-
-const SelectedItems = styled.div`
-    border: 1px solid ${theme.color.grayTwo};
-    border-radius: .25rem;
-    padding: 1.5rem;
-    text-align: center;
-    height: calc(100vw - 2rem);
-    max-height: 220px;
-    background-color: rgba(255,255,255,.3);
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-    display: grid;
-    grid-template-rows: 60px 70px 50px 30px;
-    justify-items: center;
-
-    .selected {
-        border: 1px solid ${theme.color.primary};
-    }
 `;
 
 const Logo = styled.div`
@@ -141,6 +86,14 @@ const PricePerYear = styled.div`
 `;
 
 const Payment = ({ ...props }) => {
+    const [valid, validForm] = useState(false);
+
+    const checkForm = str => {
+        console.log(str);
+        console.log(valid);
+        validForm(true);
+    }
+
     return (
         <Wrapper {...props}>
             <PageIcon>
@@ -148,37 +101,15 @@ const Payment = ({ ...props }) => {
             </PageIcon>
             <StyledHeading>Woah, slow down there cowboy!</StyledHeading>
             <StyledSubHeading className="align-center">We’re gonna need to see some payment info</StyledSubHeading>
-            <div>
-                <StyledLabel level={2}>Credit Card Number</StyledLabel>
-                <StyledInput type="text" value="4113 8273 4256" onChange={() => console.log('sure')} />
-                <Error>Umm, yeah. We're gonna need this.</Error>
-            </div>
-            <br />
-            <div>
-                <StyledLabel level={2}>Cardholder Name</StyledLabel>
-                <StyledInput type="text" value="" onChange={() => console.log('sure')} placeholder="John Dough" />
-                <Error>Umm, yeah. We're gonna need this.</Error>
-            </div>
-            <div className="card-specs">
-                <div>
-                    <StyledLabel level={2}>Expiry Date</StyledLabel>
-                    <StyledInput type="text" value="" onChange={() => console.log('sure')} placeholder="MM/YY" />
-                    <Error>Umm, yeah. We're gonna need this.</Error>
-                </div>
-                <div>
-                    <StyledLabel level={2}>CCV</StyledLabel>
-                    <StyledInput type="text" value="" onChange={() => console.log('sure')} placeholder="###" />
-                    <Error>Umm, yeah. We're gonna need this.</Error>
-                </div>
-            </div>
+            <PaymentForm valid/>
             <Pretext>selected coverage</Pretext>
-            <SelectedItems>
-                <Logo>Logo</Logo>
-                <Image image={'stars'} />
+            <Card selected>
+                <Logo>Company Logo</Logo>
+                <Image><Stars /></Image>
                 <PricePerMonth>$120<span>/mo</span></PricePerMonth>
                 <PricePerYear>$1400 per year</PricePerYear>
-            </SelectedItems>
-            <StyledButton className="complete" href="/">Complete Purchase</StyledButton>
+            </Card>
+            <StyledButton secondary onSubmit={e => checkForm()}>Complete Purchase</StyledButton>
         </Wrapper>
     )
 }

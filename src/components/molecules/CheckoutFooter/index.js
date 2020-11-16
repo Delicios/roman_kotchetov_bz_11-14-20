@@ -63,17 +63,18 @@ const StyledButton = styled(Button)`
 `;
 
 const CheckoutFooter = ({ ...props }) => {
-    const { step } = props;
+    const { step, view, validation } = props;
+
     return (
         <Wrapper>
             <div className="step-location">
                 {step}
             </div>
             <ButtonWrapper>
-                <StyledButton disabled className="disabled" href="/">
+                <StyledButton className="disabled">
                     <UpIcon />
                 </StyledButton>
-                <StyledButton href="/payment">
+                <StyledButton onClick={() => view('payment')} className={validation ? '' : 'disabled'}>
                     <DownIcon />
                 </StyledButton>
             </ButtonWrapper>

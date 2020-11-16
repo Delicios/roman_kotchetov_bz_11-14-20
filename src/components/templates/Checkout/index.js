@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import NumberedHeader from '../../molecules/NumberedHeader';
 import OptionItem from '../../molecules/OptionItem';
@@ -24,76 +24,69 @@ const Label = styled.label`
     }
 `;
 
-class Checkout extends Component {
-    constructor() {
-        super();
-        this.state = {
-            name: "Type"
-        };
-        this.onValueChange = this.onValueChange.bind(this);
-    }
+const Checkout = ({...props}) => {
+    const { view } = props;
+    const [selectedOption, setSelectedOption] = useState('');
+    const [valid, setFormValidation] = useState(false);
 
-    onValueChange(e) {
-        this.setState({
-            selectedOption: e.target.value
-        });
-        console.log(e.target.value);
-    }
+    useEffect(() => {
+        if (selectedOption) {
+            setFormValidation(true);
+        }
+    }, [selectedOption]);
 
-    render() {
-        return (
-            <>
-                <Wrapper>
-                    <NumberedHeader title="What type of insurance are you looking for?" step={1} />
-                    <Label>
-                        <input
-                            type="radio"
-                            value="Professional"
-                            checked={this.state.selectedOption === "Professional"}
-                            onChange={this.onValueChange}
-                        />
-                        <OptionItem title="Professional Liability" description="Erros & Omissions (E&O insurance)" >
-                            <BriefcaseIcon />
-                        </OptionItem>
-                    </Label>
-                    <Label>
-                        <input
-                            type="radio"
-                            value="General"
-                            checked={this.state.selectedOption === "General"}
-                            onChange={this.onValueChange}
-                        />
-                        <OptionItem title="General Liability" description="Help mitigate against loss (CGL insurance)" >
-                            <CloudIcon />
-                        </OptionItem>
-                    </Label>
-                    <Label>
-                        <input
-                            type="radio"
-                            value="Business"
-                            checked={this.state.selectedOption === "Business"}
-                            onChange={this.onValueChange}
-                        />
-                        <OptionItem title="Business Owner’s Policy" description="The complete package (BOP)" >
-                            <PackageIcon />
-                        </OptionItem>
-                    </Label>
-                    <Label>
-                        <input
-                            type="radio"
-                            value="Cyber"
-                            checked={this.state.selectedOption === "Cyber"}
-                            onChange={this.onValueChange}
-                        />
-                        <OptionItem title="Cyber" description="Internet-bsed risks (CLIC)" >
-                            <WifiIcon />
-                        </OptionItem>
-                    </Label>
-                </Wrapper>
-                <CheckoutFooter step={"1/7"} />
-            </>
-        )
-    }
+    return (
+        <>
+            <Wrapper>
+                <NumberedHeader title="What type of insurance are you looking for?" step={1} />
+                <Label>
+                    <input
+                        type="radio"
+                        name="insurance"
+                        value="Professional"
+                        onChange={() => setSelectedOption("Professional")}
+                    />
+                    <OptionItem title="Professional Liability" description="Erros & Omissions (E&O insurance)" >
+                        <BriefcaseIcon />
+                    </OptionItem>
+                </Label>
+                <Label>
+                    <input
+                        type="radio"
+                        name="insurance"
+                        value="General"
+                        onChange={() => setSelectedOption("General")}
+                    />
+                    <OptionItem title="General Liability" description="Help mitigate against loss (CGL insurance)" >
+                        <CloudIcon />
+                    </OptionItem>
+                </Label>
+                <Label>
+                    <input
+                        type="radio"
+                        name="insurance"
+                        value="Business"
+                        onChange={() => setSelectedOption("Business")}
+                    />
+                    <OptionItem title="Business Owner’s Policy" description="The complete package (BOP)" >
+                        <PackageIcon />
+                    </OptionItem>
+                </Label>
+                <Label>
+                    <input
+                        type="radio"
+                        name="insurance"
+                        value="Cyber"
+                        onChange={() => setSelectedOption("Cyber")}
+                    />
+                    <OptionItem title="Cyber" description="Internet-bsed risks (CLIC)" >
+                        <WifiIcon />
+                    </OptionItem>
+                </Label>
+            </Wrapper>
+            <CheckoutFooter step={"1/7"} view={view} validation={valid}/>
+        </>
+    )
 }
 
 export default Checkout
