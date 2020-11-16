@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import theme from '../../../theme.js';
+import theme from '../../../theme';
 
 const Badge = styled.div`
     border-radius: 50%;

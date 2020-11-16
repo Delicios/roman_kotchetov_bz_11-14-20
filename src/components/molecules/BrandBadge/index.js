@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Icon from '../../atoms/Icon';
 import { ReactComponent as ZapIcon } from '../../atoms/Icon/icons/zap.svg';
-import theme from '../../../theme.js';
+import theme from '../../../theme';
 
 const StyledIcon = styled(Icon)`
     color: ${theme.color.grayTwo};

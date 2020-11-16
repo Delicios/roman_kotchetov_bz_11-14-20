@@ -123,6 +123,7 @@ const Checkout = ({...props}) => {
                         type="text"
                         placeholder="Business Name"
                         value=""
+                        onChange={() => console.log('stop complaining')}
                     />
                 </div>
             </Wrapper>

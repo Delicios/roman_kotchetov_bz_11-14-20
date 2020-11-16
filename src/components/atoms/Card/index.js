@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import theme from '../../../theme.js';
+import theme from '../../../theme';
 
 const Styled = styled.div`
     border-radius: .25rem;
@@ -14,6 +14,11 @@ const Styled = styled.div`
     grid-template-rows: 60px 70px 50px 30px;
     justify-items: center;
     border: ${props => props.selected ? `2px solid ${theme.color.primary}` : `1px solid ${theme.color.grayTwo}`};
+    
+     @media screen and (min-width: 640px) {
+        width: 300px;
+        margin: 0 auto;
+     }
 `;
 
 const Card = ({ ...props }) => {

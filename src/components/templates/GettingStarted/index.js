@@ -6,7 +6,6 @@ import BrandBadge from '../../molecules/BrandBadge';
 import PageIcon from '../../molecules/PageIcon';
 import FeatureList from '../../organisms/FeatureList';
 import { ReactComponent as UmbrellaIcon } from '../../atoms/Icon/icons/umbrella.svg';
-import theme from '../../../theme.js';
 
 const Wrapper = styled.div`
     display: flex;

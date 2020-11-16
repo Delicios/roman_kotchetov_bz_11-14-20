@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Card from '../../atoms/Card';
 import Heading from '../../atoms/Heading';
@@ -40,10 +40,16 @@ const StyledHeading = styled(Heading)`
 `;
 
 const StyledSubHeading = styled(Heading)`
-    font-size: 20px;
-    line-height: 23px;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 26px;
     margin: 0;
     margin-bottom: 55px;
+    
+    @media screen and (max-width: 640px) {
+        font-size: 20px;
+        line-height: 23px;
+    }
 `;
 
 const StyledButton = styled(Button)`
@@ -58,7 +64,7 @@ const Pretext = styled.div`
     text-align: center;
     font-size: 12px;
     line-height: 24px;
-    margin-top: 60px;
+    margin-top: 2vh;
     margin-bottom: .5rem;
 `;
 
@@ -86,11 +92,14 @@ const PricePerYear = styled.div`
 `;
 
 const Payment = ({ ...props }) => {
-    const [valid, setFormValidation] = useState(false);
+    const { view } = props;
+    const [valid, setValid] = useState(false);
 
-    const checkForm = () => {
-        setFormValidation(true);
-    }
+    useEffect(() => {
+        if (valid) {
+            setValid(true);
+        }
+    }, [valid]);
 
     return (
         <Wrapper {...props}>
@@ -99,7 +108,7 @@ const Payment = ({ ...props }) => {
             </PageIcon>
             <StyledHeading>Woah, slow down there cowboy!</StyledHeading>
             <StyledSubHeading className="align-center">We’re gonna need to see some payment info</StyledSubHeading>
-            <PaymentForm formValidation={valid} />
+            <PaymentForm valid={setValid} />
             <Pretext>selected coverage</Pretext>
             <Card selected>
                 <Logo>Logo</Logo>
@@ -107,7 +116,7 @@ const Payment = ({ ...props }) => {
                 <PricePerMonth>$120<span>/mo</span></PricePerMonth>
                 <PricePerYear>$1400 per year</PricePerYear>
             </Card>
-            <StyledButton secondary onSubmit={e => checkForm()} className={valid ? '' : 'disabled'}>Complete Purchase</StyledButton>
+            <StyledButton secondary className={valid ? '' : 'disabled'} onClick={() => view('thanks')}>Complete Purchase</StyledButton>
         </Wrapper>
     )
 }

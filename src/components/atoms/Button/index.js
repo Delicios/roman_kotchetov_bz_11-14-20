@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import theme from '../../../theme.js';
+import theme from '../../../theme';
 
 const StyledButton = styled.button`
     text-decoration: none;
@@ -24,6 +24,7 @@ const StyledButton = styled.button`
     transition: ease .125s box-shadow, ease .125s background-color;
     font-weight: bold;
     text-transform: uppercase;
+    transition: ease .1s box-shadow, ease .1s background-color;
 
     &:hover, &:focus, &:active {
         background-color: ${props => props.secondary ? theme.color.secondaryLighter : theme.color.primary};
@@ -38,6 +39,13 @@ const StyledButton = styled.button`
         cursor: unset;
         background-color: rgba(239,239,239,.3);
         box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    &.disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.1);
+        pointer-events: none;
     }
 `;
 

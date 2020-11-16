@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import theme from '../../../theme.js';
+import theme from '../../../theme';
 
 const Paragraph = styled.p`
     color: ${theme.color.grayOne};

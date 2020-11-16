@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Icon from '../../atoms/Icon';
 import Heading from '../../atoms/Heading';
 import Paragraph from '../../atoms/Paragraph';
-import theme from '../../../theme.js';
+import theme from '../../../theme';
 
 const StyledIcon = styled(Icon)`
     display: grid;
@@ -38,13 +38,14 @@ const Wrapper = styled.div`
     background-color: ${theme.color.grayFive};
     border: 1px solid ${theme.color.grayTwo};
     box-sizing: border-box;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     margin-bottom: 1.25rem;
+    transition: ease .2s box-shadow, ease .2s border-color;
 
     &.selected {
         border-color: ${theme.color.primary};
-        box-shadow: inset 0 0 0 1px ${theme.color.primary};
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1), inset 0 0 0 1px ${theme.color.primary};
     }
 `;
 

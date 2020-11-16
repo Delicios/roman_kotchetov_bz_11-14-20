@@ -4,7 +4,7 @@ import Button from '../../atoms/Button';
 import Icon from '../../atoms/Icon';
 import { ReactComponent as UmbrellaIcon } from '../../atoms/Icon/icons/umbrella.svg';
 import { ReactComponent as CloseIcon } from '../../atoms/Icon/icons/close.svg';
-import theme from '../../../theme.js';
+import theme from '../../../theme';
 
 const Wrapper = styled.div`
     display: flex;
@@ -99,7 +99,7 @@ const Container = styled.div`
     padding: 0 20px;
 
     @media screen and (min-width: 600px) {
-        padding: 50px;
+        padding: 0 50px;
     }
 
     ::-webkit-scrollbar {
@@ -110,29 +110,30 @@ const Container = styled.div`
 
 const Modal = ({...props}) => {
     const { title, view, children } = props;
-    const closeModal = () => {
-        console.log('Close Modal');
-    }
 
     return (
-        <Wrapper>
-            <Header>
-                <StyledHeading>
-                    {title !== 'start' &&
-                    <>
-                        <StyledIcon>
-                            <UmbrellaIcon />
-                        </StyledIcon>
-                        Umbrella Hub
-                    </>
-                    }
-                    </StyledHeading>
-                <StyledButton onClick={() => closeModal()}><StyledCloseIcon /></StyledButton>
-                </Header>
-            <Container>
-                {children}
-            </Container>
-        </Wrapper>
+        <>
+        { title !== 'close' &&
+            <Wrapper>
+                <Header>
+                    <StyledHeading>
+                        {title !== 'start' &&
+                        <>
+                            <StyledIcon>
+                                <UmbrellaIcon />
+                            </StyledIcon>
+                            Umbrella Hub
+                        </>
+                        }
+                        </StyledHeading>
+                    <StyledButton onClick={() => view('close')}><StyledCloseIcon /></StyledButton>
+                    </Header>
+                <Container>
+                    {children}
+                </Container>
+            </Wrapper>
+            }
+        </>
     )
 }
 

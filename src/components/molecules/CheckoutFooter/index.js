@@ -2,18 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Button from '../../atoms/Button';
-import Icon from '../../atoms/Icon';
 import { ReactComponent as DownIcon } from '../../atoms/Icon/icons/chevron-down.svg';
 import { ReactComponent as UpIcon } from '../../atoms/Icon/icons/chevron-up.svg';
-
-import theme from '../../../theme.js';
+import theme from '../../../theme';
 
 const Wrapper = styled.div`
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: ${theme.color.primary}; // color primary 1
+    background-color: ${theme.color.primary};
     height: 60px;
     box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.25);
     color: white;
