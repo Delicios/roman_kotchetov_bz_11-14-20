@@ -94,6 +94,11 @@ const Container = styled.div`
     @media screen and (min-width: 600px) {
         padding: 50px;
     }
+
+    ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent; /* make scrollbar transparent */
+    }
 `;
 
 const Modal = ({...props}) => {
@@ -105,15 +110,16 @@ const Modal = ({...props}) => {
     return (
         <Wrapper>
             <Header>
-                {view !== 'start' &&
-                    <StyledHeading>
-                    {view}
+                <StyledHeading>
+                    {title !== 'start' &&
+                    <>
                         <StyledIcon>
                             <UmbrellaIcon />
                         </StyledIcon>
                         Umbrella Hub
+                    </>
+                    }
                     </StyledHeading>
-                }
                 <StyledButton onClick={() => closeModal()}><StyledCloseIcon /></StyledButton>
                 </Header>
             <Container>
